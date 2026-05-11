@@ -121,7 +121,8 @@ const useStore = create<AppState>((set, get) => ({
             set({ isSimulating: false, simulationSocket: null });
             get().clearFlowLog();
         } else {
-            const ws = new WebSocket('ws://localhost:8000/api/v1/simulate');
+            const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000';
+            const ws = new WebSocket(`${wsUrl}/api/v1/simulate`);
             ws.onopen = () => ws.send(JSON.stringify({ nodes, edges }));
             ws.onmessage = (event) => {
                 const data = JSON.parse(event.data);
@@ -147,7 +148,8 @@ const useStore = create<AppState>((set, get) => ({
         const { nodes, edges } = get();
         set({ isAnalyzing: true, feedback: null });
         try {
-            const res = await fetch('http://localhost:8000/api/v1/analyze', {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            const res = await fetch(`${apiUrl}/api/v1/analyze`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nodes, edges }),

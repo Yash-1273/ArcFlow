@@ -15,7 +15,8 @@ export default function AiPrompt() {
     setIsGenerating(true);
     try {
       const isGithub = prompt.trim().startsWith('https://github.com');
-      const endpoint = isGithub ? 'http://localhost:8000/api/v1/from-github' : 'http://localhost:8000/api/v1/generate';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const endpoint = isGithub ? `${apiUrl}/api/v1/from-github` : `${apiUrl}/api/v1/generate`;
       const payload = isGithub ? { repo_url: prompt.trim() } : { prompt };
 
       const res = await fetch(endpoint, {
