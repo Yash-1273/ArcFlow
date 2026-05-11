@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030712;
+  --foreground: #f9fafb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── React Flow Dark Mode ───────────────────────────────── */
+.react-flow__pane {
+  background-color: #030712 !important;
+}
+.react-flow__minimap {
+  background-color: #111827 !important;
+  border-radius: 8px;
+  border: 1px solid #374151;
+}
+.react-flow__controls button {
+  background-color: #1f2937 !important;
+  border-bottom: 1px solid #374151 !important;
+  color: white !important;
+}
+.react-flow__controls button:hover {
+  background-color: #374151 !important;
+}
+.react-flow__controls button svg {
+  fill: #d1d5db !important;
+}
+
+/* ── Gradient text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-green {
+  background: linear-gradient(135deg, #34d399, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Grid background ────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(55, 65, 81, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55, 65, 81, 0.25) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Glow card ──────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+  50%       { box-shadow: 0 0 40px rgba(59, 130, 246, 0.25); }
+}
+.glow-card {
+  animation: glow-pulse 3.5s ease-in-out infinite;
+}
+
+/* ── Float ──────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.float-animation { animation: float 4s ease-in-out infinite; }
+
+/* ── Fade in up ─────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.animate-fade-in-up              { animation: fadeInUp 0.75s ease-out forwards; }
+.animate-fade-in-up-delay-1      { animation: fadeInUp 0.75s ease-out 0.15s forwards; opacity: 0; }
+.animate-fade-in-up-delay-2      { animation: fadeInUp 0.75s ease-out 0.3s  forwards; opacity: 0; }
+.animate-fade-in-up-delay-3      { animation: fadeInUp 0.75s ease-out 0.45s forwards; opacity: 0; }
+.animate-fade-in-up-delay-4      { animation: fadeInUp 0.75s ease-out 0.6s  forwards; opacity: 0; }
+
+/* ── Illustration node pulse ────────────────────────────── */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.7; r: 5; }
+  50%       { opacity: 1;   r: 7; }
+}
+.illus-pulse { animation: node-pulse 2s ease-in-out infinite; }
+
+/* ── Dash flow along edges (hero illustration) ──────────── */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+.dash-flow { animation: dash-flow 1.2s linear infinite; }
+.dash-flow-slow { animation: dash-flow 2s linear infinite; }
+.dash-flow-fast { animation: dash-flow 0.8s linear infinite; }
+
+/* ── Shimmer ────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer-btn {
+  background: linear-gradient(90deg, #2563eb 0%, #818cf8 50%, #2563eb 100%);
+  background-size: 200%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ── Scan line (log panel) ──────────────────────────────── */
+@keyframes scan {
+  0%   { top: 0;    opacity: 0.6; }
+  100% { top: 100%; opacity: 0;   }
+}
